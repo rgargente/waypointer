@@ -1,15 +1,18 @@
 import kivy
+from kivy.app import App
+from kivy.uix.boxlayout import BoxLayout
 
 kivy.require('1.9.1')  # replace with your current kivy version !
 
-from kivy.app import App
-from kivy.uix.label import Label
+
+class WaypointerWidget(BoxLayout):
+    pass
 
 
-class MyApp(App):
+class WaypointerApp(App):
     def build(self):
-        return Label(text='Hello world')
+        return WaypointerWidget()
 
 
 if __name__ == '__main__':
-    MyApp().run()
+    WaypointerApp().run()
