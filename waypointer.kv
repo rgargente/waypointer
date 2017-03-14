@@ -1,6 +1,28 @@
 #:kivy 1.9.1
 
 <WaypointerWidget>:
+    orientation: 'vertical'
     Label:
-        font_size: 70
-        text: 'hello kv!'
+        font_size: 20
+        text: 'Waypoint'
+        size: self.texture_size
+        size_hint_y: None
+    BoxLayout:
+        size_hint_y: None
+        height: ti.height
+        TextInput:
+            id: ti
+            hint_text: 'Heading'
+            multiline: False
+            height: self.minimum_height
+        Label:
+            text: 'deg'
+            size_hint_x: None
+            size: self.texture_size
+            padding_x: 6
+    Label:
+        text: 'Your position'
+        size: self.texture_size
+        size_hint_y: None
+    Widget
+        # Filler
