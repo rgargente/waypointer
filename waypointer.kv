@@ -6,14 +6,25 @@
         text: 'Waypoint'
     BoxLayout:
         size_hint_y: None
-        height: ti.height
+        height: heading_ti.height
+        padding: [6, 0]
         TextInput:
-            id: ti
+            id: heading_ti
             hint_text: 'Heading'
             multiline: False
             height: self.minimum_height
         Label:
-            text: 'deg'
+            text: 'deg @'
+            size_hint_x: None
+            size: self.texture_size
+            padding_x: 6
+        TextInput:
+            id: distance_ti
+            hint_text: 'Distance'
+            multiline: False
+            height: self.minimum_height
+        Label:
+            text: 'km/nm/...'
             size_hint_x: None
             size: self.texture_size
             padding_x: 6
