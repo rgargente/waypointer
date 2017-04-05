@@ -12,8 +12,10 @@ class WaypointerWidget(BoxLayout):
     position_had = ObjectProperty(None)
 
     def guideme_click(self):
-        text = self.waypoint_had.heading
-        self.result_lbl.text = text
+        heading = self.waypoint_had.heading
+        dist = self.position_had.dist
+        self.result_lbl.text = \
+            'Go {}º for {} km'.format(heading, dist)
 
 
 class WaypointerApp(App):

@@ -1,5 +1,7 @@
 #:kivy 1.9.1
 
+#:set light_blue (.6, .6, 1, 1)
+
 <WaypointerWidget>:
     result_lbl: result_lbl
     waypoint_had: waypoint_had
@@ -19,6 +21,9 @@
         on_press: root.guideme_click()
     Label
         id: result_lbl
+        font_size: 18
+        color: light_blue
+        bold: True
     Widget
         # Filler
 
@@ -52,7 +57,7 @@
         multiline: False
         height: self.minimum_height
     Label:
-        text: 'km/nm/...'
+        text: 'km'
         size_hint_x: None
         size: self.texture_size
         padding_x: 6
