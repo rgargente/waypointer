@@ -1,39 +1,58 @@
 #:kivy 1.9.1
 
 <WaypointerWidget>:
+    result_lbl: result_lbl
+    waypoint_had: waypoint_had
+    position_had: position_had
+
     orientation: 'vertical'
     Header:
         text: 'Waypoint'
-    BoxLayout:
-        size_hint_y: None
-        height: heading_ti.height
-        padding: [6, 0]
-        TextInput:
-            id: heading_ti
-            hint_text: 'Heading'
-            multiline: False
-            height: self.minimum_height
-        Label:
-            text: 'deg @'
-            size_hint_x: None
-            size: self.texture_size
-            padding_x: 6
-        TextInput:
-            id: distance_ti
-            hint_text: 'Distance'
-            multiline: False
-            height: self.minimum_height
-        Label:
-            text: 'km/nm/...'
-            size_hint_x: None
-            size: self.texture_size
-            padding_x: 6
+    HeadingAndDist:
+        id: waypoint_had
     Header:
         text: 'Your position'
+    HeadingAndDist:
+        id: position_had
+    Button:
+        text: 'Guide me!'
+        on_press: root.guideme_click()
+    Label
+        id: result_lbl
     Widget
         # Filler
+
 
 <Header@Label>:
     font_size: 20
     size: self.texture_size
     size_hint_y: None
+
+
+<HeadingAndDist@BoxLayout>:
+    heading: heading_ti.text
+    dist: distance_ti.text
+
+    size_hint_y: None
+    height: heading_ti.height
+    padding: [6, 0]
+    TextInput:
+        id: heading_ti
+        hint_text: 'Heading'
+        multiline: False
+        height: self.minimum_height
+    Label:
+        text: 'deg @'
+        size_hint_x: None
+        size: self.texture_size
+        padding_x: 6
+    TextInput:
+        id: distance_ti
+        hint_text: 'Distance'
+        multiline: False
+        height: self.minimum_height
+    Label:
+        text: 'km/nm/...'
+        size_hint_x: None
+        size: self.texture_size
+        padding_x: 6
