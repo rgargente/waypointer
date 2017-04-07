@@ -8,6 +8,9 @@
     position_had: position_had
 
     orientation: 'vertical'
+    padding: 6
+    spacing: 6
+
     Header:
         text: 'Waypoint'
     HeadingAndDist:
@@ -16,7 +19,7 @@
         text: 'Your position'
     HeadingAndDist:
         id: position_had
-    Button:
+    ButtonHeader:
         text: 'Guide me!'
         on_press: root.guideme_click()
     Label
@@ -24,14 +27,20 @@
         font_size: 18
         color: light_blue
         bold: True
+        size: self.texture_size
+        size_hint_y: None
     Widget
         # Filler
 
 
 <Header@Label>:
     font_size: 20
+    bold: True
     size: self.texture_size
     size_hint_y: None
+
+<ButtonHeader@Button+Header>:
+    padding: 0, 10
 
 
 <HeadingAndDist@BoxLayout>:
@@ -40,7 +49,7 @@
 
     size_hint_y: None
     height: heading_ti.height
-    padding: [6, 0]
+    spacing: 6
     TextInput:
         id: heading_ti
         hint_text: 'Heading'
@@ -50,7 +59,6 @@
         text: 'deg @'
         size_hint_x: None
         size: self.texture_size
-        padding_x: 6
     TextInput:
         id: distance_ti
         hint_text: 'Distance'
@@ -60,4 +68,3 @@
         text: 'km'
         size_hint_x: None
         size: self.texture_size
-        padding_x: 6
