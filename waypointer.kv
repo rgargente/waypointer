@@ -4,8 +4,8 @@
 
 <WaypointerWidget>:
     result_lbl: result_lbl
-    waypoint_had: waypoint_had
-    position_had: position_had
+    waypoint_vector: waypoint_vector
+    position_vector: position_vector
 
     orientation: 'vertical'
     padding: 6
@@ -13,12 +13,12 @@
 
     Header:
         text: 'Waypoint'
-    HeadingAndDist:
-        id: waypoint_had
+    VectorTextInput:
+        id: waypoint_vector
     Header:
         text: 'Your position'
-    HeadingAndDist:
-        id: position_had
+    VectorTextInput:
+        id: position_vector
     ButtonHeader:
         text: 'Guide me!'
         on_press: root.guideme_click()
@@ -43,9 +43,9 @@
     padding: 0, 10
 
 
-<HeadingAndDist@BoxLayout>:
+<VectorTextInput@BoxLayout>:
     heading: heading_ti.text
-    dist: distance_ti.text
+    range: range_ti.text
 
     size_hint_y: None
     height: heading_ti.height
@@ -60,8 +60,8 @@
         size_hint_x: None
         size: self.texture_size
     TextInput:
-        id: distance_ti
-        hint_text: 'Distance'
+        id: range_ti
+        hint_text: 'Range'
         multiline: False
         height: self.minimum_height
     Label:
