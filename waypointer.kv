@@ -32,15 +32,17 @@
     Widget
         # Filler
 
+<Label, TextInput>:
+    font_size: '20sp'
 
 <Header@Label>:
-    font_size: 20
+    font_size: '28sp'
     bold: True
     size: self.texture_size
     size_hint_y: None
 
 <ButtonHeader@Button+Header>:
-    padding: 0, 10
+    padding: 0, 20
 
 
 <VectorTextInput@BoxLayout>:
@@ -50,6 +52,7 @@
     size_hint_y: None
     height: heading_ti.height
     spacing: 6
+
     TextInput:
         id: heading_ti
         hint_text: 'Heading'
