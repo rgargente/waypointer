@@ -18,7 +18,7 @@ class WaypointerWidget(BoxLayout):
         position_vector = Vector(float(self.position_vector.heading), float(self.position_vector.range))
         course_vector = Vector.get_course(waypoint_vector, position_vector)
         self.result_lbl.text = \
-            'Go {}º for {} km'.format(course_vector.heading, course_vector.range)
+            'Head {:.0f}º for {:.2f} km'.format(course_vector.heading, course_vector.range)
 
 
 class WaypointerApp(App):
