@@ -3,9 +3,12 @@
 #:set light_blue (.6, .6, 1, 1)
 
 <WaypointerWidget>:
+    id: waypointer_widget
+
     result_lbl: result_lbl
     waypoint_vector: waypoint_vector
     position_vector: position_vector
+    guideme_btn: guideme_btn
 
     orientation: 'vertical'
     padding: 6
@@ -15,13 +18,19 @@
         text: 'Waypoint'
     VectorTextInput:
         id: waypoint_vector
+        on_heading: root.set_guideme_state()
+        on_range: root.set_guideme_state()
     Header:
         text: 'Your position'
     VectorTextInput:
         id: position_vector
+        on_heading: root.set_guideme_state()
+        on_range: root.set_guideme_state()
     ButtonHeader:
+        id: guideme_btn
         text: 'Guide me!'
-        on_press: root.guideme_click()
+        on_press: root.on_guideme_press()
+        disabled: True
     Label
         id: result_lbl
         font_size: 18
@@ -31,6 +40,7 @@
         size_hint_y: None
     Widget
         # Filler
+
 
 <Label, TextInput>:
     font_size: '20sp'
@@ -46,32 +56,37 @@
 
 
 <VectorTextInput@BoxLayout>:
-    heading: heading_ti.text
-    range: range_ti.text
+    heading: heading_ti.heading
+    range: range_ti.range
 
     size_hint_y: None
     height: heading_ti.height
     spacing: 6
 
-    TextInput:
+    HeadingTextInput:
         id: heading_ti
-        hint_text: 'Heading'
-        input_type: 'number'
-        input_filter: 'float'
-        multiline: False
         height: self.minimum_height
     Label:
         text: 'deg @'
         size_hint_x: None
         size: self.texture_size
-    TextInput:
+    RangeTextInput:
         id: range_ti
-        hint_text: 'Range'
-        input_type: 'number'
-        input_filter: 'float'
-        multiline: False
         height: self.minimum_height
     Label:
         text: 'km'
         size_hint_x: None
         size: self.texture_size
+
+<HeadingTextInput@ValidatedTextInput>:
+    hint_text: 'Heading'
+    input_type: 'number'
+    input_filter: 'float'
+    multiline: False
+
+
+<RangeTextInput@ValidatedTextInput>:
+    hint_text: 'Range'
+    input_type: 'number'
+    input_filter: 'float'
+    multiline: False
